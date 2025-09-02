@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceae15bf371a6aa45b26ad59198478fa, type: 3}
   m_Name: WaterCan1
   m_EditorClassIdentifier: 
-  Type: 1
+  Type: 2
   Image: {fileID: 21300000, guid: 2ac692a883551f04399de3c18c43d64f, type: 3}
   Percent: 50
   UseCount: 3

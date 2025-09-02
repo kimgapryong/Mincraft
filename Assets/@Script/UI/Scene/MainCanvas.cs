@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class MainCanvas : UI_Scene
 {
+    enum Buttons
+    {
+        Seed_Btn
+    }
     public List<SlotFragment> _slot = new List<SlotFragment>();
 
     protected override bool Init()
@@ -11,6 +15,8 @@ public class MainCanvas : UI_Scene
         if(base.Init() == false)
             return false;
 
+        BindButton(typeof(Buttons));
+        BindEvent(GetButton((int)Buttons.Seed_Btn).gameObject, () => { Manager.UI.ShowPopUI<SeedPop>(); });
         foreach(SlotFragment fragment in gameObject.GetComponentsInChildren<SlotFragment>())
         {
             fragment.SetInfo(this);

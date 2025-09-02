@@ -11,10 +11,17 @@ public class Define
     }
     public enum Item
     {
+        None,
         Hormer,
         Water,
         Auto,
         Net,
         House
+    }
+    public enum Seed
+    {
+        Carrot,
+        Corn,
+        Wheat,
     }
 }

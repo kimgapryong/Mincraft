@@ -66,7 +66,6 @@ public class InputController : BaseController
             {
                 
                Vector3 markVec = Vector3Int.FloorToInt(mousePos) + Vector3.one * 0.5f;
-                markVec.y += 0.2f;
                 marker.transform.position = markVec;
                 curCursor = cellPos;
                 return;

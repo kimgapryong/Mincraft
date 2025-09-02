@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b36bd0a7cfae274abf7303d9e30387f, type: 3}
+  m_Name: SeedData
+  m_EditorClassIdentifier: 
+  Type: 0
+  Image: {fileID: 21300000, guid: e78dbd9786e0a804aa350d7cc2548249, type: 3}
+  SeedName: "\uB2F9\uADFC\uC528\uC557"
+  Humidity: 50
+  Time: 10
+  Price: 50

@@ -8,9 +8,9 @@ public class TileManager
     private const string MAIN_SPRITE_NAME = "Sprite_Tiles_Soil_23";
 
     private int minX = 11;
-    private int minY = -18;
+    private int minY = -10;
     private int maxX = 28;
-    private int maxY = -1;
+    private int maxY = 7;
     private Vector3Int[] vectorArray = new Vector3Int[9] { Vector3Int.zero, Vector3Int.right, Vector3Int.left, Vector3Int.up, Vector3Int.down, new Vector3Int(1,1), new Vector3Int(-1, 1), new Vector3Int(-1, -1), new Vector3Int(1, -1) };
 
     public Tilemap solidTile;
@@ -49,7 +49,6 @@ public class TileManager
     {
         foreach(var tile in tileList)
         {
-            Debug.Log(tileList.Count);
             if (tile.Lock)
                 if (tile.dataDic.ContainsKey(vec))
                     return true;

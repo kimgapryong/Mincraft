@@ -9,6 +9,9 @@ public class CameraController : BaseController
 
     void LateUpdate()
     {
+        if(Manager.Player == null)
+            return;
+
         Vector3 target = Manager.Player.transform.position;
         target.z = -10f;
 

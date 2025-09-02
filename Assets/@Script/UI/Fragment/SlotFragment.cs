@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotFragment : UI_Base
 {
+    public Image selectImage;
     public Define.Item item;
     private MainCanvas main;
     enum Images
@@ -17,8 +19,9 @@ public class SlotFragment : UI_Base
         if(base.Init() == false )
             return false;
 
+        selectImage = GetImage((int)Images.Select);
         GetImage((int)Images.Select).gameObject.SetActive(false);
-        GetImage((int)Images.ItemImage).gameObject.SetActive(false);
+        //GetImage((int)Images.ItemImage).gameObject.SetActive(false);
         BindEvent(gameObject, ChagenSelect);
 
         return true;
@@ -40,19 +43,26 @@ public class SlotFragment : UI_Base
 
     public void ChagenSelect()
     {
-        foreach(var slot in main._slot)
-            slot.SelectOff();
+        foreach (var slot in main._slot)
+            if (slot != this) slot.SelectOff();
 
-        if(GetImage((int)Images.Select).gameObject.activeSelf == false)
+
+        if(selectImage.gameObject.activeSelf == false)
+        {
             SelectOn();
-       
-        Manager.Input.curItem = item;
+            Manager.Input.curItem = item;
+        }
+        else
+        {
+            SelectOff();
+            Manager.Input.curItem = Define.Item.None;
+        }
+        
     }
 
     public void Refresh()
     {
         Item_Base curItem;
-        Debug.Log($"{transform.name} + {Manager.Item._itemDic.TryGetValue(item, out curItem)}");
         if(Manager.Item._itemDic.TryGetValue(item, out curItem) == false)
             return;
 

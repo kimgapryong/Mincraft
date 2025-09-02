@@ -9,6 +9,7 @@ public class UIManager
     Stack<UI_Pop> _popStack = new Stack<UI_Pop>();
 
     public UI_Scene SceneUI { get; private set; }   
+    public StateCanvas StateUI { get;  set; }
 
     public GameObject Root
     {

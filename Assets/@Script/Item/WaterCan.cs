@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WaterCan : Item_Base
 {
-    private int maxCount;
-    private int curCount;
+    public int maxCount {  get; private set; }  
+    public int curCount { get; set; }
 
     protected override bool Init()
     {
@@ -20,9 +20,18 @@ public class WaterCan : Item_Base
     {
         Vector3Int cur = Manager.Input.curCursor;
         TileData data = Manager.Tile.GetTileData(cur);
-
-        if(data == null || curCount <= 0)
+        if(data.Water > 50)
+        {
+            Manager.UI.StateUI.OnText("이미 물이 충분한 것 같아", 3f);
             return;
+
+        }
+        if(data == null || curCount <= 0)
+        {
+            Manager.UI.StateUI.OnText("물이 부족한 것 같아", 3f);
+            return;
+        }
+            
 
         data.Water += _data.Percent;
         curCount--;

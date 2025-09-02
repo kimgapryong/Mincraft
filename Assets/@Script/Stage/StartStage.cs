@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StartStage : MonoBehaviour
 {
+    public SeedData data;
     public List<GameObject> objs;
     void Start()
     {
@@ -17,14 +18,10 @@ public class StartStage : MonoBehaviour
         {
             Manager.Item._itemDic.Add(item._data.Type, item);
             Manager.Item._itemAbiltyDic.Add(item._data.Type, item.ItemAbilty);
+            Debug.Log(item);
         }
 
+        Manager.Item.AddSeed(data);
         Manager.UI.ShowSceneUI<MainCanvas>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
