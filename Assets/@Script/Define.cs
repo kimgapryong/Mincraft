@@ -24,4 +24,9 @@ public class Define
         Corn,
         Wheat,
     }
+    public enum PopMode
+    {
+        SeedPop1,
+        SeedPop2
+    }
 }

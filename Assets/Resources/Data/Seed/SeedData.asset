@@ -15,6 +15,8 @@ MonoBehaviour:
   Type: 0
   Image: {fileID: 21300000, guid: e78dbd9786e0a804aa350d7cc2548249, type: 3}
   SeedName: "\uB2F9\uADFC\uC528\uC557"
+  Pretice: "\uC544\uC8FC \uB538\uC9DD\uCC0C\uADFC\uD55C \uB2F9\uADFC\uC73C\uB85C
+    \uB9DB\uC788\uB2E4\uB294 \uC18C\uBB38\uC774 \uC790\uC790\uD558\uB2E4"
   Humidity: 50
   Time: 10
   Price: 50

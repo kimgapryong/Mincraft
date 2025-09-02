@@ -12,6 +12,9 @@ public class InputController : BaseController
     private Camera cam;
     public Vector3Int curCursor;
 
+    //현재 pop체크
+    private SeedPop pop;
+
     [SerializeField]
     private float speed = 4f;
     protected override bool Init()
@@ -68,6 +71,19 @@ public class InputController : BaseController
                Vector3 markVec = Vector3Int.FloorToInt(mousePos) + Vector3.one * 0.5f;
                 marker.transform.position = markVec;
                 curCursor = cellPos;
+                return;
+            }
+
+            if(curItem == Define.Item.None)
+            {
+                if(pop != null) 
+                    Manager.UI.ClosePopUI(pop);
+
+                Manager.UI.ShowPopUI<SeedPop>("SeedPop2", callback: (pop) =>
+                {
+                    this.pop = pop;
+                    pop.SetInfo(Define.PopMode.SeedPop2);
+                });
                 return;
             }
             
