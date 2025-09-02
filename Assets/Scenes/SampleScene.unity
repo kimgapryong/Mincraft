@@ -40074,7 +40074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a096086bcc01787458cc2111f133dedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: b69ca96162dc46946b8105f93eadc799, type: 2}
   objs:
   - {fileID: 278301839}
   - {fileID: 1293514209}
