@@ -29,4 +29,8 @@ public class Define
         SeedPop1,
         SeedPop2
     }
+    public enum Weather
+    {
+
+    }
 }

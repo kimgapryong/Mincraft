@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b36bd0a7cfae274abf7303d9e30387f, type: 3}
-  m_Name: SeedData
+  m_Name: Carrot
   m_EditorClassIdentifier: 
   Type: 0
   Image: {fileID: 21300000, guid: e78dbd9786e0a804aa350d7cc2548249, type: 3}
   SeedName: "\uB2F9\uADFC\uC528\uC557"
   Pretice: "\uC544\uC8FC \uB538\uC9DD\uCC0C\uADFC\uD55C \uB2F9\uADFC\uC73C\uB85C
     \uB9DB\uC788\uB2E4\uB294 \uC18C\uBB38\uC774 \uC790\uC790\uD558\uB2E4"
-  Humidity: 50
+  MinHumidity: 40
+  MaxHumidity: 80
   Time: 10
   Price: 50
+  weathers: 
+  Grow1: {fileID: 21300000, guid: 74717f2b618da8c4fb96fd3641241af6, type: 3}
+  Grow2: {fileID: 21300000, guid: bdcb2ede817f0214dbd5b235c0790f6b, type: 3}
+  Grow3: {fileID: 21300000, guid: 47503487df0170945a137015943092bb, type: 3}

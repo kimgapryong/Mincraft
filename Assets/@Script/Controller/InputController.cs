@@ -73,22 +73,34 @@ public class InputController : BaseController
                 curCursor = cellPos;
                 return;
             }
-
-            if(curItem == Define.Item.None)
+            if (curItem != Define.Item.None)
             {
-                if(pop != null) 
-                    Manager.UI.ClosePopUI(pop);
+                if (Manager.Item._itemDic.ContainsKey(curItem))
+                    Manager.Item._itemAbiltyDic[curItem]?.Invoke();
+                return;
+            }
+                
 
-                Manager.UI.ShowPopUI<SeedPop>("SeedPop2", callback: (pop) =>
+            SeedController seed = Manager.Tile.GetTileData(cellPos).Seed;
+            if (seed != null)
+            {
+                Manager.UI.ShowPopUI<GrowPop>(callback: (pop) =>
                 {
-                    this.pop = pop;
-                    pop.SetInfo(Define.PopMode.SeedPop2);
+                    pop.SetInfo(seed._data, seed);
                 });
                 return;
             }
-            
-            if (Manager.Item._itemDic.ContainsKey(curItem))
-                Manager.Item._itemAbiltyDic[curItem]?.Invoke();
+
+            if (pop != null)
+                Manager.UI.ClosePopUI(pop);
+
+            Manager.UI.ShowPopUI<SeedPop>("SeedPop2", callback: (pop) =>
+            {
+                this.pop = pop;
+                pop.SetInfo(Define.PopMode.SeedPop2, cellPos);
+            });
+
+           
         }
     }
 }

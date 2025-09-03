@@ -40,7 +40,7 @@ public class SeedFragment : UI_Base
     {
         GetImage((int)Images.SeedImage).sprite = seed.Image;
         GetText((int)Texts.SeedName).text = seed.SeedName;
-        GetText((int)Texts.Humidity_Txt).text = seed.Humidity.ToString();
+        GetText((int)Texts.Humidity_Txt).text = $"{seed.MinHumidity}~{seed.MaxHumidity}";
         GetText((int)Texts.Time_Txt).text = seed.Time.ToString();
         GetText((int)Texts.Amount_Txt).text = _data.count.ToString();
         GetText((int)Texts.Price_Txt).text = seed.Price.ToString();

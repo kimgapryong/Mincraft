@@ -14,6 +14,7 @@ public class SeedPop : UI_Pop
         Close_Btn,
     }
     private Define.PopMode _mode;
+    private Vector3Int cellPost;
     protected override bool Init()
     {
         if(base.Init() == false )
@@ -62,7 +63,7 @@ public class SeedPop : UI_Pop
 
                         Manager.UI.MakeSubItem<SeedFragment2>(GetObject((int)Objects.Content).transform, callback: (fa) =>
                         {
-                            fa.SetInfo(curSeed);
+                            fa.SetInfo(curSeed, cellPost);
                         });
                     }
                 }
@@ -73,9 +74,10 @@ public class SeedPop : UI_Pop
 
         return true;
     }
-    public void SetInfo(Define.PopMode mode)
+    public void SetInfo(Define.PopMode mode, Vector3Int cell)
     {
         _mode = mode;
+        cellPost = cell;
     }
     private void Update()
     {

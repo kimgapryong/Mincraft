@@ -18,7 +18,7 @@ public class MainCanvas : UI_Scene
         BindButton(typeof(Buttons));
         BindEvent(GetButton((int)Buttons.Seed_Btn).gameObject, () => { Manager.UI.ShowPopUI<SeedPop>(callback: (pop) =>
         {
-            pop.SetInfo(Define.PopMode.SeedPop1);
+            pop.SetInfo(Define.PopMode.SeedPop1, Vector3Int.zero);
         }); });
         foreach(SlotFragment fragment in gameObject.GetComponentsInChildren<SlotFragment>())
         {

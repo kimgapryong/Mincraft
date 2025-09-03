@@ -18,6 +18,7 @@ public class SeedFragment2 : UI_Base
         Seed_Btn,
     }
 
+    private Vector3Int cell;
     private SeedDatas _seed;
     private SeedData _data;
     protected override bool Init()
@@ -36,8 +37,9 @@ public class SeedFragment2 : UI_Base
         return true;
     }
 
-    public void SetInfo(SeedDatas seed)
+    public void SetInfo(SeedDatas seed, Vector3Int cell)
     {
+        this.cell = cell;
         _seed = seed;   
         _data = seed.data;
     }
@@ -50,6 +52,7 @@ public class SeedFragment2 : UI_Base
 
     private void UseSeed()
     {
-
+        SeedController seed = Manager.Item.UseSeed(_data.Type, cell);
+        seed.transform.position = cell + Vector3.one * 0.5f;
     }
 }

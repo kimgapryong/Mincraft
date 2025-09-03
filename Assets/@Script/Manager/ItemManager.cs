@@ -43,6 +43,23 @@ public class ItemManager
         _seedDic[seed] = seedDatas;
     }
     
+    public SeedController UseSeed(Define.Seed seed, Vector3Int cell)
+    {
+        SeedDatas curSeed = GetSeed(seed);
+        SeedData data = curSeed.data;
+
+        GameObject go = Manager.Resources.Instantiate("Seed");
+        SeedController sdc = go.AddComponent<SeedController>();
+        sdc.SetInfo(data, Manager.Tile.GetTileData(cell));
+
+
+        curSeed.count--;
+
+        if (curSeed.count == 0) 
+            _seedDic.Remove(seed);
+
+        return sdc;
+    }
 }
 public struct SeedDatas
 {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -80,7 +81,7 @@ public class TileEx
         set
         {
             _lock = value;
-            Object.Destroy(obj);
+            UnityEngine.Object.Destroy(obj);
         }
     }
     public Dictionary<Vector3Int, TileData> dataDic  = new Dictionary<Vector3Int, TileData>();
@@ -103,6 +104,8 @@ public class TileData
     private Vector3Int vec;
     private Tilemap tilemap;
     private TileBase baseTile;
+    public SeedController Seed {  get; set; }
+    public Action<float, float> waterAction;
     //현재 농장물 스크립트
     private float _water;
     public float Water
@@ -112,6 +115,7 @@ public class TileData
         {
             _water = value;
             WaterChange(value);
+            waterAction?.Invoke(value, 100);
         }
     }
 
@@ -123,7 +127,7 @@ public class TileData
         this.parent = parent;
         baseTile = tilemap.GetTile(vec);
     }
-
+    
     private void WaterChange(float value)
     {
         if(value >= 80)
