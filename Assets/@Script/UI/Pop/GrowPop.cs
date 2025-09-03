@@ -43,6 +43,11 @@ public class GrowPop : UI_Pop
 
         seed._tile.Water = seed._tile.Water;
         Refresh();
+
+        if (seed.Grow)
+            GetText((int)Texts.Exp_Txt).text = "성장완료";
+        else
+            GetText((int)Texts.Exp_Txt).gameObject.SetActive(false);
         BindEvent(GetButton((int)Buttons.Close_Btn).gameObject, CloseAction);
         
         return true;
@@ -86,6 +91,7 @@ public class GrowPop : UI_Pop
     }
     private void StringAction(string str)
     {
+        GetText((int)Texts.Exp_Txt).gameObject.SetActive(true);
         GetText((int)Texts.Exp_Txt).text = str;
     }
     private void CloseAction()

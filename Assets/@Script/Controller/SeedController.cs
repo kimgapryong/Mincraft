@@ -11,6 +11,7 @@ public class SeedController : BaseController
     private Define.Weather[] weather;
     public Action<float, float> timeAction;
     public Action<string> stringAction;
+    public bool Grow { get; private set; }
     
     private bool _canGrow = true; // 현재 상태에 맞게 성장할 값
     private SpriteRenderer re;
@@ -87,13 +88,13 @@ public class SeedController : BaseController
                 yield return null;
             }
                 
-            CurTime += Time.deltaTime;
+            CurTime += _tile.GrowPoint;
             stringAction?.Invoke($"{CurTime}/{MaxTime}");
-            yield return null;
-        } 
+            yield return new WaitForSeconds(1f);
+        }
 
         //성장하고 수확할 준비하는 코드
-
+        Grow = true;
     }
     
 }

@@ -104,6 +104,7 @@ public class TileData
     private Vector3Int vec;
     private Tilemap tilemap;
     private TileBase baseTile;
+    public float GrowPoint { get; private set; } = 1f;
     public SeedController Seed {  get; set; }
     public Action<float, float> waterAction;
     //현재 농장물 스크립트
@@ -140,5 +141,15 @@ public class TileData
     //Sprite_Tiles_Soil_27 적당한거
     //Sprite_Tiles_Soil_23 너무 젖은 거
     //Sprite_Tiles_Soil_35 마른 거
+    public void SetGrowPoint(float growPoint)
+    {
+        GrowPoint = growPoint;
+    }
+    public void Clear()
+    {
+        UnityEngine.Object.Destroy(Seed.gameObject);
+        Seed = null;
+
+    }
 
 }

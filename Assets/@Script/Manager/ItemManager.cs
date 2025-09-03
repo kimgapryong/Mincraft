@@ -8,6 +8,7 @@ public class ItemManager
     public Dictionary<Define.Item, Item_Base> _itemDic = new Dictionary<Define.Item, Item_Base>();
     public Dictionary<Define.Item, Action> _itemAbiltyDic = new Dictionary<Define.Item, Action>();
     public Dictionary<Define.Seed, SeedDatas> _seedDic = new Dictionary<Define.Seed, SeedDatas>();
+    public Dictionary<Define.Plant, SeedDatas> _plantDic = new Dictionary<Define.Plant, SeedDatas>();
 
     public Item_Base GetItem(Define.Item item)
     {
@@ -42,7 +43,21 @@ public class ItemManager
         seedDatas.count++;
         _seedDic[seed] = seedDatas;
     }
-    
+    public void AddPlant(SeedData seedData)
+    {
+        Define.Plant seed = seedData.Plant;
+        SeedDatas seedDatas;
+        if (_plantDic.TryGetValue(seed, out seedDatas) == false)
+        {
+            seedDatas = new SeedDatas() { data = seedData, count = 1 };
+            _plantDic.Add(seed, seedDatas);
+            Debug.Log(seed);
+            return;
+        }
+
+        seedDatas.count++;
+        _plantDic[seed] = seedDatas;
+    }
     public SeedController UseSeed(Define.Seed seed, Vector3Int cell)
     {
         SeedDatas curSeed = GetSeed(seed);

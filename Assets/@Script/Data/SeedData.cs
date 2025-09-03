@@ -6,6 +6,7 @@ using UnityEngine;
 public class SeedData : ScriptableObject
 {
     public Define.Seed Type;
+    public Define.Plant Plant;
     public Sprite Image;
     public string SeedName;
     public string Pretice;

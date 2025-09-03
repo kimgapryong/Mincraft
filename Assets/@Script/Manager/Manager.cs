@@ -15,6 +15,8 @@ public class Manager : MonoBehaviour
     public static UIManager UI { get { return Instance._ui; } }
     private ItemManager _item = new ItemManager();
     public static ItemManager Item { get { return Instance._item; } }
+    private RandomManager _rand = new RandomManager();
+    public static RandomManager Random { get { return Instance._rand; } }
 
     public static PlayerController Player;
     public static InputController Input;

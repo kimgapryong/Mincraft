@@ -54,5 +54,8 @@ public class SeedFragment2 : UI_Base
     {
         SeedController seed = Manager.Item.UseSeed(_data.Type, cell);
         seed.transform.position = cell + Vector3.one * 0.5f;
+
+        if(Manager.Item.GetSeed(_data.Type).count == 0)
+            Destroy(gameObject);
     }
 }

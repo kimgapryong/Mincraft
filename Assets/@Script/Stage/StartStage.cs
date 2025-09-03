@@ -18,7 +18,6 @@ public class StartStage : MonoBehaviour
         {
             Manager.Item._itemDic.Add(item._data.Type, item);
             Manager.Item._itemAbiltyDic.Add(item._data.Type, item.ItemAbilty);
-            Debug.Log(item);
         }
 
         Manager.Item.AddSeed(data);

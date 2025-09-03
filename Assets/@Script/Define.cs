@@ -24,6 +24,12 @@ public class Define
         Corn,
         Wheat,
     }
+    public enum Plant
+    {
+        Carrot,
+        Corn,
+        Wheat,
+    }
     public enum PopMode
     {
         SeedPop1,
@@ -31,6 +37,10 @@ public class Define
     }
     public enum Weather
     {
-
+        Clear,
+        Cloudy,
+        rainy,
+        stormy,
+        hail
     }
 }

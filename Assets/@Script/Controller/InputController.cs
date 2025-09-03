@@ -11,6 +11,7 @@ public class InputController : BaseController
     public Tilemap tile;
     private Camera cam;
     public Vector3Int curCursor;
+    
 
     //현재 pop체크
     private SeedPop pop;

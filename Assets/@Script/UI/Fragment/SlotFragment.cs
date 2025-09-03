@@ -8,6 +8,7 @@ public class SlotFragment : UI_Base
     public Image selectImage;
     public Define.Item item;
     private MainCanvas main;
+    private Item_Base myItem;
     enum Images
     {
         Select,
@@ -24,6 +25,7 @@ public class SlotFragment : UI_Base
         //GetImage((int)Images.ItemImage).gameObject.SetActive(false);
         BindEvent(gameObject, ChagenSelect);
 
+        myItem = Manager.Item.GetItem(item);
         return true;
     }
     public void SetInfo(MainCanvas main)
@@ -34,10 +36,14 @@ public class SlotFragment : UI_Base
 
     public void SelectOn()
     {
+        if(myItem != null)
+            myItem.gameObject.SetActive(true);
         GetImage((int)Images.Select).gameObject.SetActive(true);
     }
     public void SelectOff()
     {
+        if (myItem != null)
+            myItem.gameObject.SetActive(false);
         GetImage((int)Images.Select).gameObject.SetActive(false);
     }
 
