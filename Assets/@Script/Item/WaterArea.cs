@@ -7,7 +7,7 @@ public class WaterArea : BaseController
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        WaterCan waterCan = Manager.Item.GetItem(Define.Item.Water) as WaterCan;
+        WaterCan waterCan = Manager.Item.GetItem(Define.Item.Water).data as WaterCan;
         Debug.Log(waterCan);
 
         if (waterCan == null)
@@ -24,7 +24,7 @@ public class WaterArea : BaseController
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        WaterCan waterCan = Manager.Item.GetItem(Define.Item.Water) as WaterCan;
+        WaterCan waterCan = Manager.Item.GetItem(Define.Item.Water).data as WaterCan;
 
         if (waterCan == null)
             return;

@@ -94,7 +94,15 @@ public class TileEx
     {
         foreach(var data in dataDic.Values)
         {
-            data.Water -= water;
+            data.Water += water;
+        }
+    }
+
+    public void SetAllGrowPoint(float grow)
+    {
+        foreach (var data in dataDic.Values)
+        {
+            data.SetGrowPoint(grow);
         }
     }
 }

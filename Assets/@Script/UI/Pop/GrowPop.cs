@@ -62,7 +62,21 @@ public class GrowPop : UI_Pop
         {
             switch (w)
             {
-
+                case Define.Weather.Clear:
+                    weatherString += "¸¼À½ ";
+                    break;
+                case Define.Weather.rainy:
+                    weatherString += "ºñ ";
+                    break;
+                case Define.Weather.hail:
+                    weatherString += "¿ì¹Ú ";
+                    break;
+                case Define.Weather.stormy:
+                    weatherString += "ÆøÇ³ ";
+                    break;
+                case Define.Weather.Cloudy:
+                    weatherString += "Èå¸² ";
+                    break;
             }
         }
     }

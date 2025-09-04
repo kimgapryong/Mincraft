@@ -12,6 +12,8 @@ public class SeedData : ScriptableObject
     public string Pretice;
     public float MinHumidity;
     public float MaxHumidity;
+    public int MinGrowTime;
+    public int MaxGrowTime;
     public float Time;
     public int Price;
 
@@ -19,4 +21,7 @@ public class SeedData : ScriptableObject
     public Sprite Grow1;
     public Sprite Grow2;
     public Sprite Grow3;
+
+    public string PlantName;
+    public Sprite Final;
 }

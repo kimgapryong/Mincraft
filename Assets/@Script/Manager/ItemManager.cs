@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class ItemManager
 {
-    public Dictionary<Define.Item, Item_Base> _itemDic = new Dictionary<Define.Item, Item_Base>();
+    public Dictionary<Define.Item, ItemDatas> _itemDic = new Dictionary<Define.Item, ItemDatas>();
     public Dictionary<Define.Item, Action> _itemAbiltyDic = new Dictionary<Define.Item, Action>();
     public Dictionary<Define.Seed, SeedDatas> _seedDic = new Dictionary<Define.Seed, SeedDatas>();
     public Dictionary<Define.Plant, SeedDatas> _plantDic = new Dictionary<Define.Plant, SeedDatas>();
 
-    public Item_Base GetItem(Define.Item item)
+    public ItemDatas GetItem(Define.Item item)
     {
-        Item_Base itemBase = null;
+        ItemDatas itemBase;
         if(_itemDic.TryGetValue(item, out itemBase) == true)
             return itemBase;
 
-        return null;
+        return itemBase;
     }
     public SeedDatas GetSeed(Define.Seed type)
     {
@@ -27,6 +27,41 @@ public class ItemManager
         Debug.Log(data.count);
         Debug.LogError("값이 없소이다");
         return data;
+    }
+    public SeedDatas GetPlant(Define.Plant plant)
+    {
+        SeedDatas data;
+        if(_plantDic.TryGetValue(plant, out data))
+            return data;
+
+        Debug.Log("없어요");
+        return data;
+    }
+    public void AddItem(Item_Base itemData)
+    {
+        Define.Item item = itemData._data.Type;
+        ItemDatas itemDatas;
+        if(_itemDic.TryGetValue(item, out itemDatas) == false)
+        {
+            itemDatas = new ItemDatas() {data = itemData, count = 1 };
+            _itemDic.Add(item, itemDatas);
+            _itemAbiltyDic.Add(item, itemData.ItemAbilty);
+            return;
+        }
+
+        if(itemData._data.MaxCount == 1)
+        {
+            UnityEngine.Object.Destroy(itemDatas.data.gameObject);
+            itemDatas.data = itemData;
+            _itemDic[item] = itemDatas;
+            _itemAbiltyDic[item] = itemData.ItemAbilty;
+            return;
+        }
+        if(itemData._data.MaxCount <= itemDatas.count)
+            return;
+
+        itemDatas.count++;
+        _itemDic[item] = itemDatas;
     }
     public void AddSeed(SeedData seedData)
     {
@@ -79,5 +114,10 @@ public class ItemManager
 public struct SeedDatas
 {
     public SeedData data;
+    public int count;
+}
+public struct ItemDatas
+{
+    public Item_Base data;
     public int count;
 }

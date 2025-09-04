@@ -25,7 +25,7 @@ public class SlotFragment : UI_Base
         //GetImage((int)Images.ItemImage).gameObject.SetActive(false);
         BindEvent(gameObject, ChagenSelect);
 
-        myItem = Manager.Item.GetItem(item);
+        myItem = Manager.Item.GetItem(item).data;
         return true;
     }
     public void SetInfo(MainCanvas main)
@@ -68,8 +68,8 @@ public class SlotFragment : UI_Base
 
     public void Refresh()
     {
-        Item_Base curItem;
-        if(Manager.Item._itemDic.TryGetValue(item, out curItem) == false)
+        Item_Base curItem = Manager.Item.GetItem(item).data;
+        if(curItem == null)
             return;
 
         ItemData data = curItem._data;

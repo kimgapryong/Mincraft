@@ -16,8 +16,8 @@ public class StartStage : MonoBehaviour
         //플레이어 아이템 초기화
         foreach (var item in Manager.Player.GetComponentsInChildren<Item_Base>(true))
         {
-            Manager.Item._itemDic.Add(item._data.Type, item);
-            Manager.Item._itemAbiltyDic.Add(item._data.Type, item.ItemAbilty);
+            Manager.Item.AddItem(item);
+            item.gameObject.SetActive(false);
         }
 
         Manager.Item.AddSeed(data);

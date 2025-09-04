@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainCanvas : UI_Scene
 {
     enum Buttons
     {
-        Seed_Btn
+        Seed_Btn,
+        Plant_Btn,
+        Market_Btn
     }
     public List<SlotFragment> _slot = new List<SlotFragment>();
-
+    public Button MarketBtn { get; private set; }
     protected override bool Init()
     {
         if(base.Init() == false)
@@ -20,11 +23,22 @@ public class MainCanvas : UI_Scene
         {
             pop.SetInfo(Define.PopMode.SeedPop1, Vector3Int.zero);
         }); });
-        foreach(SlotFragment fragment in gameObject.GetComponentsInChildren<SlotFragment>())
+
+        BindEvent(GetButton((int)Buttons.Plant_Btn).gameObject, () => {
+            Manager.UI.ShowPopUI<PlantPop>();
+        });
+        foreach (SlotFragment fragment in gameObject.GetComponentsInChildren<SlotFragment>())
         {
             fragment.SetInfo(this);
             _slot.Add(fragment);
         }
+        BindEvent(GetButton((int)Buttons.Market_Btn).gameObject, () =>
+        {
+            Manager.UI.ShowPopUI<MarketPop>();
+        });
+
+        MarketBtn = GetButton((int)Buttons.Market_Btn);
+        MarketBtn.gameObject.SetActive(false);
 
         SlotAllRefresh();
         return true;

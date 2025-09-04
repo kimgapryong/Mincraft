@@ -8,6 +8,17 @@ public class Homer : Item_Base
     {
         TileData curTile = Manager.Tile.GetTileData(Manager.Input.curCursor);
         SeedController seed = curTile.Seed;
+
+        if(seed == null )
+        {
+            Manager.UI.StateUI.OnText("에잇 아직 아무것도 없잖아 뭘 심어야지", 3f);
+            return;
+        }
+        if (!seed.Grow)
+        {
+            Manager.UI.StateUI.OnText("아직 수확하면 안될 것 같은데", 3f);
+            return ;
+        }
         Manager.Item.AddPlant(seed._data);
 
         if (Manager.Random.RollPercent(_data.Percent))

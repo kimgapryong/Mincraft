@@ -10,9 +10,18 @@ public class PlayerController : BaseController
     public Vector2 dir;
     private Define.State _state;
     public Define.State State { get { return _state; } set { } }
+    public Transform weaponPos;
 
-    
-  
+    protected override bool Init()
+    {
+        if (base.Init() == false)
+            return false;
+
+        weaponPos = transform.Find("Weapon");
+
+        return true;
+    }
+
     private void Update()
     {
         UpdateMethod();

@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceae15bf371a6aa45b26ad59198478fa, type: 3}
-  m_Name: WaterCan1
+  m_Name: Homer2
   m_EditorClassIdentifier: 
-  Type: 2
+  Type: 1
   Path: 
-  ItemName: "\uC77C\uBC18 \uBB3C\uBFCC\uB9AC"
-  Image: {fileID: 21300000, guid: 2ac692a883551f04399de3c18c43d64f, type: 3}
+  ItemName: "\uB18D\uC0AC\uC6A9 \uACE0\uAE09 \uB3C4\uAD6C"
+  Image: {fileID: 21300000, guid: f57e3572da1abd74f86c42b413f7ce91, type: 3}
   Percent: 50
-  Explanation: "- \uC0AC\uC6A9 \uC2DC \uD574\uB2F9 \uD0C0\uC77C\uC5D0 \uC2B5\uB3C4\uB97C
-    50% \uC99D\uAC00\uD55C\uB2E4  \uD55C\uBC88 \uBB3C\uC744 \uB2F4\uC73C\uBA74 \uCD5C\uB300
-    3\uBC88 \uC0AC\uC6A9 \uAC00\uB2A5\uD558\uB2E4."
-  Price: 0
+  Explanation: "- \uC218\uD655 \uC2DC \uC791\uBB3C\uC774 1~3\uAC1C\uC529 \uB098\uC624\uBA70
+    \uC528\uC557\uC774 \uB098\uC62C \uD655\uB960\uC774 50% \uC774\uB2E4."
+  Price: 2000
   MaxCount: 1
-  UseCount: 3
+  UseCount: 0

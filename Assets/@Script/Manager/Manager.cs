@@ -20,7 +20,7 @@ public class Manager : MonoBehaviour
 
     public static PlayerController Player;
     public static InputController Input;
-    public static void Init()
+    private static void Init()
     {
         if(_instance != null)
             return;

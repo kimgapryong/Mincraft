@@ -10,4 +10,19 @@ public class RandomManager
         if (percent >= 100f) return true;
         return Random.value < (percent * 0.01f); // 50 -> 0.5
     }
+
+    public int GetRandomValue(float[] percent)
+    {
+        float rand = Random.value * 100f; 
+        float cumulative = 0f;
+
+        for (int i = 0; i < percent.Length; i++)
+        {
+            cumulative += percent[i];
+            if (rand < cumulative)
+                return i;
+        }
+
+        return percent.Length - 1; 
+    }
 }

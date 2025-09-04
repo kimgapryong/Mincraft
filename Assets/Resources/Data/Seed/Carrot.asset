@@ -13,15 +13,20 @@ MonoBehaviour:
   m_Name: Carrot
   m_EditorClassIdentifier: 
   Type: 0
+  Plant: 0
   Image: {fileID: 21300000, guid: e78dbd9786e0a804aa350d7cc2548249, type: 3}
   SeedName: "\uB2F9\uADFC\uC528\uC557"
   Pretice: "\uC544\uC8FC \uB538\uC9DD\uCC0C\uADFC\uD55C \uB2F9\uADFC\uC73C\uB85C
     \uB9DB\uC788\uB2E4\uB294 \uC18C\uBB38\uC774 \uC790\uC790\uD558\uB2E4"
   MinHumidity: 40
   MaxHumidity: 80
+  MinGrowTime: 6
+  MaxGrowTime: 18
   Time: 10
   Price: 50
   weathers: 
   Grow1: {fileID: 21300000, guid: 74717f2b618da8c4fb96fd3641241af6, type: 3}
   Grow2: {fileID: 21300000, guid: bdcb2ede817f0214dbd5b235c0790f6b, type: 3}
   Grow3: {fileID: 21300000, guid: 47503487df0170945a137015943092bb, type: 3}
+  PlantName: "\uB2F9\uADFC"
+  Final: {fileID: 21300000, guid: 13f1e364bc0abb44e9a77955d54aaeba, type: 3}
