@@ -22,7 +22,8 @@ public class BuyFragment : UI_Base
     private Define.Item type;
     private ItemData _data;
     private ItemDatas _datas;
-    private Color btnColor = new Color(153,231,62);
+    private float price;
+    private float updatePrice = 1.5f;
     protected override bool Init()
     {
         if (base.Init() == false)
@@ -35,28 +36,43 @@ public class BuyFragment : UI_Base
         GetImage((int)Images.ItemImage).sprite = _data.Image;
         GetText((int)Texts.ItemName).text = _data.ItemName;
         GetText((int)Texts.Explanation_Txt).text = _data.Explanation;
-        GetText((int)Texts.Price_Txt).text = $"{_data.Price}$";
-        BindEvent(GetButton((int)Buttons.Buy_Btn).gameObject, BuyItem);
-        
-        Refresh();
 
-        if ((_datas.count >= _data.MaxCount && _data.MaxCount != 1)|| GameManager.Instance.Money < _data.Price)
+
+        if(type != Define.Item.Tile)
+        {
+            BindEvent(GetButton((int)Buttons.Buy_Btn).gameObject, BuyItem);
+            Refresh();
+        
+        }
+        else
+        {
+            BindEvent(GetButton((int)Buttons.Buy_Btn).gameObject, BuyTile);
+            GetText((int)Texts.Count_Txt).text = $"{Manager.Tile.GetCount()}/{Manager.Tile.tileList.Count}";
+        }
+
+        if ((_datas.count >= _data.MaxCount && _data.MaxCount != 1 && type != Define.Item.Tile) || GameManager.Instance.Money < _data.Price)
         {
             GetText((int)Texts.Price_Txt).text = "구매불가";
             GetButton((int)Buttons.Buy_Btn).image.color = Color.gray;
         }
-            
-            return true;
+
+        return true;
     }
     public void SetInfo(ItemData data)
     {
         _data = data;
         type = data.Type;
+        price = _data.Price;
     }
     public void Refresh()
     {
         _datas = Manager.Item.GetItem(type);
-        GetText((int)Texts.Count_Txt).text = $"{_datas.count}/{_data.MaxCount}";
+        if (_data.MaxCount == 1)
+            GetText((int)Texts.Count_Txt).text = $"0/1";
+        else
+            GetText((int)Texts.Count_Txt).text = $"{_datas.count}/{_data.MaxCount}";
+
+        GetText((int)Texts.Price_Txt).text = $"{price}$";
     }
     private void BuyItem()
     {
@@ -66,5 +82,19 @@ public class BuyFragment : UI_Base
         GameObject item = Manager.Resources.Instantiate($"Item/{_data.Path}", Manager.Player.weaponPos);
         Item_Base itemBase = item.GetComponent<Item_Base>();
         Manager.Item.AddItem(itemBase); 
+
+        price *= updatePrice;
+        Refresh();
+    }
+    private void BuyTile()
+    {
+        if (Manager.Tile.GetCount() >= Manager.Tile.tileList.Count || GameManager.Instance.Money < _data.Price)
+            return;
+
+        Manager.Tile.BuyTile();
+        price *= updatePrice;
+
+        GetText((int)Texts.Price_Txt).text = $"{price}$";
+        GetText((int)Texts.Count_Txt).text = $"{Manager.Tile.GetCount()}/{Manager.Tile.tileList.Count}";
     }
 }

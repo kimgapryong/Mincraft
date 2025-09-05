@@ -16,7 +16,8 @@ public class Define
         Water,
         Auto,
         Net,
-        House
+        House,
+        Tile
     }
     public enum Seed
     {

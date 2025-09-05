@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         set
         {
             _price = value;
-
         }
     }
 

@@ -37,6 +37,25 @@ public class ItemManager
         Debug.Log("¾ø¾î¿ä");
         return data;
     }
+    public void SellPlant(Define.Plant plant)
+    {
+        SeedDatas data = GetPlant(plant);
+        if(data.count == 0)
+        {
+            _plantDic.Remove(plant);
+            return;
+        }
+            
+        GameManager.Instance.Money += data.data.Price;
+        data.count--;
+        _plantDic[plant] = data;
+    }
+    public void SellAllPlant(Define.Plant plant)
+    {
+        SeedDatas data = GetPlant(plant);
+        while(data.count > 0)
+            SellPlant(plant);
+    }
     public void AddItem(Item_Base itemData)
     {
         Define.Item item = itemData._data.Type;

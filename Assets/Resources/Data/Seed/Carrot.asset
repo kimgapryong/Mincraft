@@ -24,7 +24,7 @@ MonoBehaviour:
   MaxGrowTime: 18
   Time: 10
   Price: 50
-  weathers: 
+  weathers: 000000000100000002000000
   Grow1: {fileID: 21300000, guid: 74717f2b618da8c4fb96fd3641241af6, type: 3}
   Grow2: {fileID: 21300000, guid: bdcb2ede817f0214dbd5b235c0790f6b, type: 3}
   Grow3: {fileID: 21300000, guid: 47503487df0170945a137015943092bb, type: 3}

@@ -68,6 +68,29 @@ public class TileManager
         }
         return null;
     }
+
+    public void BuyTile()
+    {
+        foreach(TileEx tile in tileList)
+        {
+            if(tile.Lock)
+                continue;
+            tile.Lock = true;
+            break;
+        }
+    }
+    public int GetCount()
+    {
+        int count = 0;
+        foreach (TileEx tile in tileList)
+        {
+            if (!tile.Lock)
+                return count;
+            count++;
+        }
+
+        return 0;
+    }
 }
 
 public class TileEx
@@ -122,9 +145,9 @@ public class TileData
         get { return _water; }
         set
         {
-            _water = value;
+            _water = Mathf.Max(value, 0);
             WaterChange(value);
-            waterAction?.Invoke(value, 100);
+            waterAction?.Invoke(_water, 100);
         }
     }
 

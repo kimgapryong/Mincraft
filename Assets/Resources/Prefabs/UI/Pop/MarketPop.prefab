@@ -816,6 +816,7 @@ MonoBehaviour:
   dataList:
   - {fileID: 11400000, guid: 3e080825636f2c34e97039be9c7fa11d, type: 2}
   - {fileID: 11400000, guid: 5c6f5325b6fd3054b8c904a6d573435f, type: 2}
+  - {fileID: 11400000, guid: 09fec34d187f8a3409edbb71b477676c, type: 2}
 --- !u!1 &5165640562300612150
 GameObject:
   m_ObjectHideFlags: 0
