@@ -12,6 +12,7 @@ public class SeedController : BaseController
     public Action<float, float> timeAction;
     public Action<string> stringAction;
     public bool Grow { get; private set; }
+    public bool LamGrow { get; set; }   
     
     private bool _canGrow = true; // 현재 상태에 맞게 성장할 값
     private SpriteRenderer re;
@@ -21,6 +22,9 @@ public class SeedController : BaseController
             return false;
 
         _tile.Seed = this;
+        if(_tile.lam != null)   
+            _tile.lam.SetInfo(this);
+
         re = GetComponent<SpriteRenderer>();
         re.sprite = _data.Grow1;
 
@@ -62,7 +66,7 @@ public class SeedController : BaseController
     {
         foreach (var w in this.weather)
         {
-            if(weather == w)
+            if(weather == w || LamGrow)
                 _canGrow = true;
             return;
         }
@@ -96,6 +100,7 @@ public class SeedController : BaseController
 
         //성장하고 수확할 준비하는 코드
         Grow = true;
+        _tile.ChangeSeed();
     }
     
 }

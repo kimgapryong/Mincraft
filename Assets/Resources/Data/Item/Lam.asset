@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceae15bf371a6aa45b26ad59198478fa, type: 3}
+  m_Name: Lam
+  m_EditorClassIdentifier: 
+  Type: 5
+  Path: Lam
+  ItemName: "\uBE44\uB2D0\uD558\uC6B0\uC2A4"
+  Image: {fileID: 21300000, guid: 7f3b3c3016d597d47b4d335e3af0f90b, type: 3}
+  Percent: 0
+  Explanation: "- \uC0AC\uC6A9 \uC2DC \uD574\uB2F9 \uD0C0\uC77C\uC5D0 \uBE44\uB2D0\uD558\uC6B0\uC2A4\uB97C
+    \uC124\uCE58\uD574 \uB0A0\uC528\uB85C\uBD80\uD130 \uC791\uBB3C\uC744 \uBCF4\uD638\uD560
+    \uC218 \uC788\uB2E4. - \uC124\uCE58 \uC2DC \uC808\uB300\uB85C \uD574\uB2F9 \uD0C0\uC77C\uC758
+    \uC2B5\uB3C4\uAC00 \uAC10\uC18C\uD558\uC9C0 \uC54A\uC73C\uBA70 \uC77C\uBC18 \uC791\uBB3C1
+    \uACFC 2, \uD2B9\uC218 \uC791\uBB3C1 \uC740 \uC808\uB300\uB85C \uC131\uC7A5\uC774
+    \uBA48\uCD98\uB2E4. - \uBE44\uB2D0\uD558\uC6B0\uC2A4\uB97C \uCCA0\uAC70\uD558\uBA74
+    \uB2E4\uC2DC \uC2B5\uB3C4 \uAC10\uC18C\uC640 \uC131\uC7A5\uC774 \uC678\uBD80
+    \uC601\uD5A5\uC5D0 \uB530\uB77C \uC9C4\uD589\uB41C\uB2E4. "
+  Price: 400
+  MaxCount: 30
+  UseCount: 0

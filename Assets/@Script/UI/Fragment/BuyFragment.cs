@@ -79,12 +79,25 @@ public class BuyFragment : UI_Base
         if (_datas.count >= _data.MaxCount || GameManager.Instance.Money < _data.Price)
             return;
 
+        ItemDatas datas = Manager.Item.GetItem(type);
+        if (datas.count != 0)
+        {
+            Manager.Item.AddItem(datas.data);
+            Refresh();
+            return;
+        }
         GameObject item = Manager.Resources.Instantiate($"Item/{_data.Path}", Manager.Player.weaponPos);
         Item_Base itemBase = item.GetComponent<Item_Base>();
         Manager.Item.AddItem(itemBase); 
-
         price *= updatePrice;
         Refresh();
+
+        MainCanvas main = Manager.UI.SceneUI as MainCanvas;
+        foreach (var slot in main._slot)
+            if(slot.item == type)
+                slot.myItem = itemBase;
+
+        main.SlotAllRefresh();
     }
     private void BuyTile()
     {

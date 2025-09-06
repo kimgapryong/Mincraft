@@ -8,7 +8,7 @@ public class SlotFragment : UI_Base
     public Image selectImage;
     public Define.Item item;
     private MainCanvas main;
-    private Item_Base myItem;
+    public Item_Base myItem;
     enum Images
     {
         Select,

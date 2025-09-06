@@ -117,6 +117,9 @@ public class TileEx
     {
         foreach(var data in dataDic.Values)
         {
+            if(data.lam != null)
+                continue;
+
             data.Water += water;
         }
     }
@@ -136,6 +139,8 @@ public class TileData
     private Tilemap tilemap;
     private TileBase baseTile;
     public float GrowPoint { get; private set; } = 1f;
+    public AutoController auto;
+    public LamController lam;
     public SeedController Seed {  get; set; }
     public Action<float, float> waterAction;
     //현재 농장물 스크립트
@@ -145,7 +150,7 @@ public class TileData
         get { return _water; }
         set
         {
-            _water = Mathf.Max(value, 0);
+            _water = Mathf.Clamp(value, 0, 100);
             WaterChange(value);
             waterAction?.Invoke(_water, 100);
         }
@@ -182,5 +187,19 @@ public class TileData
         Seed = null;
 
     }
+    public void ClearLam()
+    {
+        UnityEngine.Object.Destroy(lam.gameObject);
+        lam = null;
+    }
+    public void ChangeSeed()
+    {
+        if(auto == null)
+            return;
+
+        auto.GetPlant();
+    }
+
+   
 
 }

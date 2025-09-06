@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceae15bf371a6aa45b26ad59198478fa, type: 3}
+  m_Name: Auto
+  m_EditorClassIdentifier: 
+  Type: 3
+  Path: Auto
+  ItemName: "\uC790\uB3D9\uC218\uD655 \uD1B5"
+  Image: {fileID: 21300000, guid: 7bb2898d49ae86745a2565ea6a0fd4a3, type: 3}
+  Percent: 40
+  Explanation: "- \uD0C0\uC77C\uC5D0 \uC124\uCE58 \uC2DC \uC131\uC7A5\uD55C \uC791\uBB3C\uC744
+    \uC790\uB3D9\uC73C\uB85C \uC218\uD655\uD558\uACE0 \uBD80\uC0B0\uBB3C\uC744 \uBAA8\uB450
+    \uCC3D\uACE0\uC5D0 \uC800\uC7A5\uD55C\uB2E4. - \uC218\uD655 \uC2DC \uC791\uBB3C\uC774
+    2\uAC1C\uC529 \uB098\uC624\uBA70 \uC528\uC557\uC774 \uB098\uC62C \uD655\uB960\uC740
+    40%\uC774\uB2E4. - \uD0C0\uC77C\uBCC4\uB85C 1\uAC1C\uC529 \uC124\uCE58\uAC00
+    \uAC00\uB2A5\uD558\uB2E4. "
+  Price: 200
+  MaxCount: 30
+  UseCount: 0

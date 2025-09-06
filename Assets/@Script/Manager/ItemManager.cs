@@ -82,6 +82,22 @@ public class ItemManager
         itemDatas.count++;
         _itemDic[item] = itemDatas;
     }
+
+    public void UseItem(Define.Item item)
+    {
+        ItemDatas data = GetItem(item);
+        if(data.data._data.MaxCount == 1 || data.count == 0)
+            return;
+            
+        data.count--;
+       /* if(data.count == 0)
+        {
+            _itemDic.Remove(item);
+            return;
+        }*/
+
+        _itemDic[item] = data;
+    }
     public void AddSeed(SeedData seedData)
     {
         Define.Seed seed = seedData.Type;

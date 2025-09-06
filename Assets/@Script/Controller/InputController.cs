@@ -17,7 +17,7 @@ public class InputController : BaseController
     private SeedPop pop;
 
     [SerializeField]
-    private float speed = 4f;
+    private float speed = 20f;
     protected override bool Init()
     {
         if(base.Init() == false)
