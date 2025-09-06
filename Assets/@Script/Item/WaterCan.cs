@@ -18,6 +18,11 @@ public class WaterCan : Item_Base
     }
     public override void ItemAbilty()
     {
+        if (GameManager.Instance.Tired >= 100)
+        {
+            Manager.UI.StateUI.OnText("야이 시키야 좀 쉬자 좀", 3);
+            return;
+        }
         Vector3Int cur = Manager.Input.curCursor;
         TileData data = Manager.Tile.GetTileData(cur);
         if(data.Water > 50)
@@ -35,6 +40,8 @@ public class WaterCan : Item_Base
 
         data.Water += _data.Percent;
         curCount--;
+        GameManager.Instance.Tired += 5f;
+
 
     }
 }

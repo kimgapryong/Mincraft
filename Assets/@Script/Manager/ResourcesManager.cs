@@ -27,6 +27,16 @@ public class ResourcesManager
 
         return obj;
     }
+    public SeedData LoadSeed(string path)
+    {
+        if (_objects.ContainsKey(path))
+            return _objects[path] as SeedData;
+
+        SeedData obj = Resources.Load<SeedData>($"Data/Seed/{path}");
+        _objects[path] = obj;
+
+        return obj;
+    }
     public GameObject Instantiate(string path, Vector3 vec, Quaternion quan, Transform parent = null, Action<GameObject> callback = null)
     {
         GameObject obj = Instantiate(path, parent, callback);

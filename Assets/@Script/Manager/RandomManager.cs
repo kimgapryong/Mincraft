@@ -25,4 +25,8 @@ public class RandomManager
 
         return percent.Length - 1; 
     }
+    public float GetRandomRange(float min, float max)
+    {
+        return Random.Range(min, max);
+    }
 }

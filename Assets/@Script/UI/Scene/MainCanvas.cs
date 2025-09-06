@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class MainCanvas : UI_Scene
 {
+    enum Images
+    {
+        Tilred,
+    }
     enum Buttons
     {
         Seed_Btn,
@@ -18,7 +22,11 @@ public class MainCanvas : UI_Scene
         if(base.Init() == false)
             return false;
 
+        BindImage(typeof(Images));
         BindButton(typeof(Buttons));
+
+        TiredAction(0,100);
+        GameManager.Instance.tiredAction = TiredAction;
         BindEvent(GetButton((int)Buttons.Seed_Btn).gameObject, () => { Manager.UI.ShowPopUI<SeedPop>(callback: (pop) =>
         {
             pop.SetInfo(Define.PopMode.SeedPop1, Vector3Int.zero);
@@ -50,5 +58,8 @@ public class MainCanvas : UI_Scene
             slot.Refresh();
     }
 
-    
+    private void TiredAction(float cur, float max)
+    {
+        GetImage((int)Images.Tilred).fillAmount = cur / max;
+    }
 }

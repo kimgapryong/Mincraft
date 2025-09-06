@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    public Dictionary<Define.Plant, WheaterDatas> plantDic = new Dictionary<Define.Plant, WheaterDatas>();
     public static GameManager Instance { get { Init(); return _instance; } }
+    public Action<float, float> tiredAction;
 
     private Define.Weather[] weathers = new Define.Weather[5]
     {
@@ -20,6 +22,17 @@ public class GameManager : MonoBehaviour
     {
         50f, 30f, 10f, 5f, 5f
     };
+
+    private float _tired;
+    public float Tired
+    {
+        get { return _tired; }
+        set
+        {
+            _tired = Mathf.Clamp(value, 0, 100);
+            tiredAction?.Invoke(value, 100);
+        }
+    }
     public Define.Weather CurWeahter { get; private set; }
     public int Hour { get; private set; }
     public float inGameTime;   // 0~24½Ã°£
@@ -126,7 +139,7 @@ public class GameManager : MonoBehaviour
                 continue;
             tile.SetAllGrowPoint(growPoint);
         }
-
+        MakePrice();
     }
 
     /*public void RegisterEvent(int hour, Action callback)
@@ -149,4 +162,20 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
+    private void MakePrice()
+    {
+        WheaterDatas datas;
+        foreach (Define.Plant plant in System.Enum.GetValues(typeof(Define.Plant)))
+        {
+            float curFloat = Manager.Random.GetRandomRange(0.3f, 2f);
+            datas.wheater = curFloat;
+            datas.pre = Define.GetWeatherString(plant, curFloat);
+            plantDic[plant] = datas;
+        }
+    }
+}
+public struct WheaterDatas
+{
+    public float wheater;
+    public string pre;
 }

@@ -6,6 +6,11 @@ public class Homer : Item_Base
 {
     public override void ItemAbilty()
     {
+        if (GameManager.Instance.Tired >= 100)
+        {
+            Manager.UI.StateUI.OnText("야이 시키야 좀 쉬자 좀", 3);
+            return;
+        }
         TileData curTile = Manager.Tile.GetTileData(Manager.Input.curCursor);
         SeedController seed = curTile.Seed;
 
@@ -25,5 +30,6 @@ public class Homer : Item_Base
             Manager.Item.AddSeed(seed._data);
         
         curTile.Clear();
+        GameManager.Instance.Tired += 5f;
     }
 }
