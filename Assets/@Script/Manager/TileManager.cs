@@ -135,12 +135,13 @@ public class TileEx
 public class TileData
 {
     private TileEx parent;
-    private Vector3Int vec;
+    public Vector3Int vec;
     private Tilemap tilemap;
     private TileBase baseTile;
     public float GrowPoint { get; private set; } = 1f;
     public AutoController auto;
     public LamController lam;
+    public GameObject Animal { get; set; }
     public SeedController Seed {  get; set; }
     public Action<float, float> waterAction;
     //현재 농장물 스크립트
@@ -199,7 +200,11 @@ public class TileData
 
         auto.GetPlant();
     }
-
+    public void ClearAnimal()
+    {
+        UnityEngine.Object.Destroy(Animal);
+        Animal = null;
+    }
    
 
 }

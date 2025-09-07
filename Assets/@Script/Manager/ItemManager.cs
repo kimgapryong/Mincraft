@@ -2,13 +2,50 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class ItemManager
 {
     public Dictionary<Define.Item, ItemDatas> _itemDic = new Dictionary<Define.Item, ItemDatas>();
     public Dictionary<Define.Item, Action> _itemAbiltyDic = new Dictionary<Define.Item, Action>();
+
     public Dictionary<Define.Seed, SeedDatas> _seedDic = new Dictionary<Define.Seed, SeedDatas>();
+    public Dictionary<Define.Seed, SeedDatas> _invenSeedDic = new Dictionary<Define.Seed, SeedDatas>();
+
     public Dictionary<Define.Plant, SeedDatas> _plantDic = new Dictionary<Define.Plant, SeedDatas>();
+    public Dictionary<Define.Plant, SeedDatas> _invenPlantDic = new Dictionary<Define.Plant, SeedDatas>();
+
+    public void AddInvenSeedDic(SeedData seedData)
+    {
+        Define.Seed seed = seedData.Type;
+
+        SeedDatas seedDatas;
+        if (_invenSeedDic.TryGetValue(seed, out seedDatas) == false)
+        {
+            seedDatas = new SeedDatas() { data = seedData, count = 1 };
+            _invenSeedDic.Add(seed, seedDatas);
+            Debug.Log(seed);
+            return;
+        }
+
+        seedDatas.count++;
+        _invenSeedDic[seed] = seedDatas;
+    }
+    public void AddInvenPlantDic(SeedData seedData)
+    {
+        Define.Plant seed = seedData.Plant;
+        SeedDatas seedDatas;
+        if (_invenPlantDic.TryGetValue(seed, out seedDatas) == false)
+        {
+            seedDatas = new SeedDatas() { data = seedData, count = 1 };
+            _invenPlantDic.Add(seed, seedDatas);
+            Debug.Log(seed);
+            return;
+        }
+
+        seedDatas.count++;
+        _invenPlantDic[seed] = seedDatas;
+    }
 
     public ItemDatas GetItem(Define.Item item)
     {
@@ -144,6 +181,33 @@ public class ItemManager
             _seedDic.Remove(seed);
 
         return sdc;
+    }
+
+    public bool UseSeed(Define.Seed seed)
+    {
+        if (!_seedDic.ContainsKey(seed)) 
+            return false;
+
+        SeedDatas data = GetSeed(seed);
+        if (data.count == 0)
+            return false;
+
+        data.count--;
+        _seedDic[seed] = data;
+        return true;
+    }
+    public bool UsePlant(Define.Plant plant)
+    {
+        if (!_plantDic.ContainsKey(plant)) 
+            return false;
+
+        SeedDatas data = GetPlant(plant);
+        if (data.count == 0)
+            return false;
+
+        data.count--;
+        _plantDic[plant] = data;
+        return true;
     }
 }
 public struct SeedDatas

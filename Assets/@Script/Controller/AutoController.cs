@@ -11,6 +11,9 @@ public class AutoController : BaseController
         TileData curTile = Manager.Tile.GetTileData(Manager.Input.curCursor);
         SeedController seed = curTile.Seed;
 
+        if (seed == null) 
+            return;
+
         Manager.Item.AddPlant(seed._data);
         Manager.Item.AddPlant(seed._data);
 
@@ -18,6 +21,7 @@ public class AutoController : BaseController
             Manager.Item.AddSeed(seed._data);
 
         curTile.Clear();
+        GameManager.Instance.AnimalPercent += 5f;
     }
 
     public void SetInfo(ItemData data)

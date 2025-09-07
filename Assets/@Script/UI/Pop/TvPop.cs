@@ -22,9 +22,9 @@ public class TvPop : UI_Pop
         BindObject(typeof(Objects));
         BindButton(typeof(Buttons));
 
-        GetButton((int)Buttons.Weather_Btn).image.color = Color.yellow;
-        GetButton((int)Buttons.Crops_Btn).image.color = Color.gray;
-
+        BindEvent(GetButton((int)Buttons.Crops_Btn).gameObject, CropsBtnAction);
+        
+        CropsBtnAction();
         return true;
     }
     private void CropsBtnAction()
@@ -37,7 +37,10 @@ public class TvPop : UI_Pop
 
         foreach(SeedData data in seedDatas)
         {
-            
+            Manager.UI.MakeSubItem<CropsFragment>(GetObject((int)Objects.Content).transform, callback: (pop) =>
+            {
+                pop.SetInfo(data);
+            });
         }
         
     }

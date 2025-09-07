@@ -80,8 +80,9 @@ public class SeedController : BaseController
     {
         while (MaxTime > CurTime)
         {
-            while(!_canGrow || _tile.Water > _data.MaxHumidity || _tile.Water < _data.MinHumidity || GameManager.Instance.Hour < _data.MinGrowTime || GameManager.Instance.Hour > _data.MaxGrowTime)
+            while(!_canGrow || _tile.Water > _data.MaxHumidity || _tile.Water < _data.MinHumidity || GameManager.Instance.Hour < _data.MinGrowTime || GameManager.Instance.Hour > _data.MaxGrowTime || _tile.Animal != null)
             {
+                
                 if (!_canGrow)
                     stringAction?.Invoke("성장에 부합한 날씨가 아닙니다");
                 else if (_tile.Water > _data.MaxHumidity)
@@ -90,6 +91,8 @@ public class SeedController : BaseController
                     stringAction?.Invoke("땅에 물이 너무 부족합니다");
                 else if(GameManager.Instance.Hour < _data.MinGrowTime || GameManager.Instance.Hour > _data.MaxGrowTime)
                     stringAction?.Invoke("성장할 수 있는 시간이 아닙니다");
+                else if(_tile.Animal != null)
+                    stringAction?.Invoke("해당 타일에는 동물이 있습니다");
                 yield return null;
             }
                 

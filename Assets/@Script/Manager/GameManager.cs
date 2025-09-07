@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public Dictionary<Define.Plant, WheaterDatas> plantDic = new Dictionary<Define.Plant, WheaterDatas>();
     public static GameManager Instance { get { Init(); return _instance; } }
     public Action<float, float> tiredAction;
+    public Action<float> moneyAction;
 
     private Define.Weather[] weathers = new Define.Weather[5]
     {
@@ -42,15 +43,17 @@ public class GameManager : MonoBehaviour
     private float growPoint = 1f; //작물 성장 게이지
     private float hamPoint; //타일의 습도 게이지
 
-    private float _price = 60000;
+    private float _price = 100;
     public float Money
     {
         get { return _price; }
         set
         {
             _price = value;
+            moneyAction?.Invoke(value);
         }
     }
+    public float AnimalPercent { get; set; }    
 
     //private Dictionary<int, Action> timeEvents = new Dictionary<int, Action>();
 
@@ -59,6 +62,7 @@ public class GameManager : MonoBehaviour
         Init();
         OnDayPassed(); //날씨 먼저 설정
         StartCoroutine(UpdateHam());
+        
     }
 
     private void Update()
@@ -139,7 +143,9 @@ public class GameManager : MonoBehaviour
                 continue;
             tile.SetAllGrowPoint(growPoint);
         }
+
         MakePrice();
+        Animal();
     }
 
     /*public void RegisterEvent(int hour, Action callback)
@@ -172,6 +178,27 @@ public class GameManager : MonoBehaviour
             datas.pre = Define.GetWeatherString(plant, curFloat);
             plantDic[plant] = datas;
         }
+    }
+    public void Animal()
+    {
+        Debug.Log("치킨나");
+        if (!Manager.Random.RollPercent(AnimalPercent))
+            return;
+
+        Debug.Log("치킨나와");
+        AnimalPercent = 0;
+        int value = UnityEngine.Random.Range(1, 4);
+        List<TileData> list = Manager.Random.GetRandomTileData(value);
+        Debug.Log(list.Count);
+        foreach (var tile in list)
+        {
+            GameObject animal = Manager.Resources.Instantiate("Animal/Chicken",(Vector3)tile.vec + Vector3.one * 0.5f, Quaternion.identity);
+            animal.GetOrAddComponent<AnimalController>().SetInfo(tile);
+            tile.Animal = animal;
+
+            Debug.Log(tile.Animal);
+        }
+        
     }
 }
 public struct WheaterDatas

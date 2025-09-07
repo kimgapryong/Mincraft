@@ -31,5 +31,7 @@ public class Homer : Item_Base
         
         curTile.Clear();
         GameManager.Instance.Tired += 5f;
+        GameManager.Instance.AnimalPercent += 100f;
+        GameManager.Instance.Animal();
     }
 }

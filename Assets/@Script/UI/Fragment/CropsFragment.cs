@@ -33,6 +33,7 @@ public class CropsFragment : UI_Base
     private void Refresh()
     {
         GetImage((int)Images.ItemImage).sprite = _data.Final;
+        GetText((int)Texts.ItemName).text = _data.PlantName;
         GetText((int)Texts.Explanation_Txt).text = GameManager.Instance.plantDic[_data.Plant].pre;
 
         int count = Manager.Item.GetPlant(_data.Plant).count;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RandomManager
@@ -28,5 +29,29 @@ public class RandomManager
     public float GetRandomRange(float min, float max)
     {
         return Random.Range(min, max);
+    }
+    public List<TileData> GetRandomTileData(int count)
+    {
+        int value = count;
+        List<TileData> tileList = new List<TileData>();
+
+        while( value > 0)
+        {
+            int randValue = Random.Range(0, Manager.Tile.tileList.Count);
+            TileEx curTile = Manager.Tile.tileList[randValue];
+
+            Debug.Log(randValue);
+            Debug.Log(curTile.dataDic.Count);
+
+            if (!curTile.Lock)
+                continue;
+
+            Debug.Log("¿Ö ¾ÈµÅ");
+            int randTileValue = Random.Range(0, curTile.dataDic.Count);
+            tileList.Add(curTile.dataDic.Values.ToList()[randTileValue]);
+            value--;
+        }
+
+        return tileList;
     }
 }

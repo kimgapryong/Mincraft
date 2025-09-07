@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BedController : BaseController
 {
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController waterCan = collision.GetComponent<PlayerController>();
